@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnvBoard (Staging) - environment status</title>
+<style>
+  :root { --theme: #b45309; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; background: #f4f6f8; color: #1c2733; }
+  header { background: var(--theme); color: #fff; padding: 28px 20px; }
+  header h1 { margin: 0 0 6px; font-size: 28px; }
+  header p { margin: 0; opacity: .92; font-size: 15px; }
+  main { max-width: 860px; margin: 24px auto; padding: 0 16px 40px; }
+  .env-badge { display: inline-block; background: #fff; color: var(--theme); font-weight: 700; padding: 3px 12px; border-radius: 999px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .card { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(20,30,40,.12); padding: 20px 22px; margin-bottom: 18px; }
+  .card h2 { margin: 0 0 10px; font-size: 18px; }
+  .announcement { border-left: 5px solid var(--theme); }
+  .announcement p { margin: 0; font-size: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td { padding: 8px 6px; border-bottom: 1px solid #e6ebef; vertical-align: top; }
+  td.k { font-weight: 600; width: 260px; color: #40536a; }
+  code { background: #eef2f6; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  footer { color: #66788c; font-size: 13px; text-align: center; padding-bottom: 28px; }
+</style>
+</head>
+<body>
+<header>
+  <span class="env-badge">staging</span>
+  <h1>EnvBoard (Staging)</h1>
+  <p>STAGING ENVIRONMENT: test data only, not for customers</p>
+</header>
+<main>
+  <section class="card announcement">
+    <h2>Announcement</h2>
+    <p>Welcome to EnvBoard. This is the baseline release (v1) running in both environments.</p>
+  </section>
+  <section class="card">
+    <h2>Resolved configuration for this deployment</h2>
+    <table>
+      <tr><td class="k">Environment (APP_ENV)</td><td><code>staging</code></td></tr>
+      <tr><td class="k">API base URL (API_BASE_URL)</td><td><code>https://api-staging.envboard.example</code></td></tr>
+      <tr><td class="k">Log level (LOG_LEVEL)</td><td><code>debug</code></td></tr>
+      <tr><td class="k">Beta dashboard (FEATURE_BETA_DASHBOARD)</td><td><code>true</code></td></tr>
+      <tr><td class="k">New checkout (FEATURE_NEW_CHECKOUT)</td><td><code>false</code></td></tr>
+      <tr><td class="k">Support email (SUPPORT_EMAIL)</td><td><code>staging-alerts@envboard.example</code></td></tr>
+      <tr><td class="k">Items per page (ITEMS_PER_PAGE)</td><td><code>10</code></td></tr>
+      <tr><td class="k">Session timeout (SESSION_TIMEOUT_MINUTES)</td><td><code>15 minutes</code></td></tr>
+    </table>
+  </section>
+  <section class="card">
+    <h2>Build information</h2>
+    <table>
+      <tr><td class="k">Built from branch</td><td><code>staging</code></td></tr>
+      <tr><td class="k">Commit</td><td><code>b353e6e</code></td></tr>
+      <tr><td class="k">Built at (UTC)</td><td><code>2026-10-23 05:28:53 UTC</code></td></tr>
+      <tr><td class="k">Config file used</td><td><code>config/staging.env</code></td></tr>
+    </table>
+  </section>
+</main>
+<footer>EnvBoard sample app - staging / production environment demonstration. No real data, no secrets.</footer>
+</body>
+</html>
