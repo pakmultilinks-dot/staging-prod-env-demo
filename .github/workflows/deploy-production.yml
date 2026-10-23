@@ -1,0 +1,36 @@
+name: Deploy to PRODUCTION
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Check out the main branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build with the PRODUCTION configuration
+        run: python3 scripts/build.py --config config/production.env --out dist
+      - name: Smoke test the production build
+        run: python3 scripts/smoke_test.py --expect-env production --dir dist
+      - name: Publish to GitHub Pages at the site root
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
+          enable_jekyll: false
