@@ -1,1 +1,1 @@
-Welcome to EnvBoard. This is the baseline release (v1) running in both environments.
+Announcing v2: faster page loads and a refreshed layout. This change was tested on staging first, then promoted to production.
