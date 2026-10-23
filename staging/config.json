@@ -11,8 +11,8 @@
   "ITEMS_PER_PAGE": "10",
   "SESSION_TIMEOUT_MINUTES": "15",
   "BUILD_BRANCH": "staging",
-  "BUILD_COMMIT": "b353e6e",
-  "BUILD_TIME": "2026-10-23 05:28:53 UTC",
+  "BUILD_COMMIT": "1fddc4b",
+  "BUILD_TIME": "2026-10-23 05:30:21 UTC",
   "CONFIG_FILE": "config/staging.env",
-  "ANNOUNCEMENT": "Welcome to EnvBoard. This is the baseline release (v1) running in both environments."
+  "ANNOUNCEMENT": "Announcing v2: faster page loads and a refreshed layout. This change was tested on staging first, then promoted to production."
 }
