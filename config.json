@@ -11,8 +11,8 @@
   "ITEMS_PER_PAGE": "25",
   "SESSION_TIMEOUT_MINUTES": "60",
   "BUILD_BRANCH": "main",
-  "BUILD_COMMIT": "b353e6e",
-  "BUILD_TIME": "2026-10-23 05:27:48 UTC",
+  "BUILD_COMMIT": "51ef411",
+  "BUILD_TIME": "2026-10-23 05:31:32 UTC",
   "CONFIG_FILE": "config/production.env",
-  "ANNOUNCEMENT": "Welcome to EnvBoard. This is the baseline release (v1) running in both environments."
+  "ANNOUNCEMENT": "Announcing v2: faster page loads and a refreshed layout. This change was tested on staging first, then promoted to production."
 }
