@@ -1,0 +1,25 @@
+name: Validate (pull requests)
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-both-environments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build and smoke test STAGING config
+        run: |
+          python3 scripts/build.py --config config/staging.env --out dist-staging
+          python3 scripts/smoke_test.py --expect-env staging --dir dist-staging
+      - name: Build and smoke test PRODUCTION config
+        run: |
+          python3 scripts/build.py --config config/production.env --out dist-production
+          python3 scripts/smoke_test.py --expect-env production --dir dist-production
