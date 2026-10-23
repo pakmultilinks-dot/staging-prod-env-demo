@@ -1,0 +1,37 @@
+name: Deploy to STAGING
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Check out the staging branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build with the STAGING configuration
+        run: python3 scripts/build.py --config config/staging.env --out dist
+      - name: Smoke test the staging build
+        run: python3 scripts/smoke_test.py --expect-env staging --dir dist
+      - name: Publish to GitHub Pages under /staging/
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: staging
+          keep_files: true
+          enable_jekyll: false
